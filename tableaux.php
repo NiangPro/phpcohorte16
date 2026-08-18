@@ -58,4 +58,9 @@ echo "<pre>";
     }
     // echo $matrice[1][2];
 
+
+    $person = ["prenom" =>"Moussa", "nom" => "Ndiaye", "age" => 45];
+
+    echo $person["nom"];
+
 echo "</pre>";
