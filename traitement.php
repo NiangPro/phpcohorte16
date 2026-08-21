@@ -5,7 +5,7 @@ echo "<pre>";
 
             if(isset($_POST["register"])){
                 extract($_POST);
-                print_r($_POST);
+                print_r($_POST); 
 
                 echo "<br> Prenom:".ucfirst($_POST["prenom"]);
                 echo "<br> Nom:".$_POST["prenom"];

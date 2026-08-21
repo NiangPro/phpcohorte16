@@ -44,8 +44,6 @@
                 echo "<div class='alert alert-info'>Veuillez renseigner le formulaire</div>";
             }
             echo "</pre>";
-
-
         ?>
     </div>
 
