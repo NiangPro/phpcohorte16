@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     $nom = "wiflix";
     $page = "Accueil";
     $date = date("Y");

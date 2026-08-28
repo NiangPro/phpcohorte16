@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
  $nom = "wiflix";
     $page = "Contact";
     $date = date("Y");
@@ -7,7 +7,13 @@
     if (isset($_POST["send"])) {
         extract($_POST);
 
-        return header("Location: success.php?nomc=$nomc&email=$email&contenu=$msg" );
+        $_SESSION["nom"] = $_POST["nomc"];
+        $_SESSION["email"] = $email;
+        $_SESSION["contenu"] = $_POST["msg"];
+
+        return header("location: success.php");
+
+        // return header("Location: success.php?nomc=$nomc&email=$email&contenu=$msg" );
     }
 require_once("entete.php");
 

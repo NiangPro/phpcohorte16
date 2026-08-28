@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $page ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.php" aria-current="page"
-                            >Accueil</a
+                            ><i class="fa fa-house"></i> Accueil</a
                         >
                     </li>
                     <li class="nav-item">
@@ -37,6 +38,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="connexion.php"><i class="fa fa-user"></i> Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inscription.php">Inscription</a>
                     </li>
                 </ul>
             </div>
