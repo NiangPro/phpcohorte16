@@ -2,6 +2,17 @@
 $nom = "wiflix";
     $page = "Inscription";
     $date = date("Y");
+
+    require_once("database.php");
+
+    if(isset($_POST["inscription"])){
+        extract($_POST);
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT, ["cost" => 12]);
+        if(inscrire($prenom, $nom, $email, $mdp)){
+            return header("Location: connexion.php");
+        }
+
+    }
 require_once("entete.php"); 
 
 ?>
