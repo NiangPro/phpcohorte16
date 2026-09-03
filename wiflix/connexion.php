@@ -1,7 +1,28 @@
 <?php 
+session_start();
+require_once("database.php");
 $nom = "wiflix";
     $page = "Connexion";
     $date = date("Y");
+
+    if(isset($_POST["connexion"])){
+        extract($_POST);
+
+        $user = seconnecter($email);
+        if($user){
+            if(password_verify($mdp, $user["mdp"])){
+                $_SESSION["user"] = $user;
+                return header("Location:profil.php");
+            }else{
+                die("Les deux mots de passe ne concordent pas");
+            }
+        }else{
+            die("Email introuvable");
+        }
+    }
+
+
+    
 require_once("entete.php"); 
 
 ?>

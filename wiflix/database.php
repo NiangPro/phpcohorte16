@@ -7,6 +7,32 @@ try{
     die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
 }
 
+function recupererToutesLesCategories(){
+    global $db;
+    try {
+        $q  = $db->prepare("SELECT * FROM categories ORDER BY id DESC");
+        $q->execute();
+
+        return $q->fetchAll();
+    }catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
+function seconnecter($email){
+    global $db;
+    try {
+        $q = $db->prepare("SELECT * FROM users WHERE email=:email");
+        $q->execute([
+            "email" =>$email
+        ]);
+
+        return $q->fetch();
+    }catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
 
 function inscrire($prenom, $nom, $email, $mdp, $role= "client"){
     global $db;

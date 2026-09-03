@@ -39,12 +39,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
+                    <?php if(isset($_SESSION["user"]) && $_SESSION["user"]["role"] == "admin"): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories.php">Categories</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php if(!isset($_SESSION["user"])){ ?>
                     <li class="nav-item">
                         <a class="nav-link" href="connexion.php"><i class="fa fa-user"></i> Connexion</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="inscription.php">Inscription</a>
                     </li>
+                       <?php }else{ ?> 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= $_SESSION["user"]["prenom"]; ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profil.php">Profil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="deconnexion.php">Deconnexion</a></li>
+                        </ul>
+                    </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>
