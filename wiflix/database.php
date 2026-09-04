@@ -7,6 +7,28 @@ try{
     die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
 }
 
+function supprimerUneCategorie($id){
+    global $db;
+    try {
+        $q = $db->prepare("DELETE FROM categories WHERE id=:id");
+        return $q->execute(["id" => $id]);
+    } catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
+function ajouterUneCategorie($nom){
+    global $db;
+    try {
+        $q = $db->prepare("INSERT INTO categories VALUES(NULL, :nom)");
+        return $q->execute([
+            "nom" => $nom
+        ]);
+    } catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
 function recupererToutesLesCategories(){
     global $db;
     try {
