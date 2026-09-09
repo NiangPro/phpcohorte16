@@ -43,6 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="categories.php">Categories</a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="produits.php">Produits</a>
+                    </li>
                     <?php endif; ?>
                     <?php if(!isset($_SESSION["user"])){ ?>
                     <li class="nav-item">

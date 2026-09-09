@@ -7,6 +7,64 @@ try{
     die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
 }
 
+function modifierUnProduit($id, $nom, $prix, $description, $image, $idcategorie){
+    global $db;
+    try {
+        $q = $db->prepare("UPDATE produits 
+        SET nom =:nom, prix =:prix, description =:description, image =:image, idcategorie =:idcategorie
+        WHERE id=:id");
+        return $q->execute([
+            "nom" => $nom,
+            "prix" => $prix,
+            "description" => $description,
+            "image" => $image,
+            "idcategorie" => $idcategorie,
+            "id" => $id
+        ]);
+    }catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
+function recupererUnProduit($id){
+    global $db;
+    try {
+        $q = $db->prepare("SELECT * FROM produits WHERE id=:id");
+        $q->execute(["id" => $id]);
+
+        return $q->fetch();
+    }catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
+function recupererTousLesProduits(){
+    global $db;
+    try {
+        $q = $db->prepare("SELECT * FROM produits ORDER BY id DESC");
+        $q->execute();
+
+        return $q->fetchAll();
+    } catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+function ajouterUnProduit($nom, $prix, $description, $image, $idcategorie){
+    global $db;
+    try {
+        $q = $db->prepare("INSERT INTO produits VALUES(NULL, :nom, :prix, :description, :image, :idcategorie)");
+        return $q->execute([
+            "nom" => $nom,
+            "prix" => $prix,
+            "description" => $description,
+            "image" => $image,
+            "idcategorie" => $idcategorie
+        ]);
+    } catch(PDOException $e){
+        die("Erreur: ".$e->getMessage()." a la ligne ".__LINE__);
+    }
+}
+
 function supprimerUneCategorie($id){
     global $db;
     try {

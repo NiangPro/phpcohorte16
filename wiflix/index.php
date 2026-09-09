@@ -1,19 +1,31 @@
 <?php 
     session_start();
+
+    require_once("database.php");
     $nom = "wiflix";
     $page = "Accueil";
     $date = date("Y");
 
+    $produits = recupererTousLesProduits();
     include("entete.php");
 ?>
 
 
-    <div class="container  mt-5">
-        <h1>Page d'<?= $page ?></h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptates, facilis ad itaque aliquam incidunt hic maiores ab nesciunt, eius corrupti mollitia ex minus tempore. Sequi iusto iste autem itaque quas minus optio laboriosam modi. Expedita nihil corrupti voluptas veniam quam id quos earum repudiandae aliquam nostrum? Nisi qui nihil quaerat, assumenda, quam quis aliquam voluptatum nam delectus debitis architecto nobis natus adipisci molestiae cumque veritatis asperiores fuga dolores dolorem quia modi. Obcaecati hic consectetur incidunt a, consequuntur reprehenderit cumque, nisi officia asperiores iure nesciunt culpa numquam suscipit? Odit voluptates ipsa quis tenetur. Doloremque fuga blanditiis velit dignissimos, temporibus quis eos assumenda nostrum eveniet incidunt voluptatem ea quia excepturi atque commodi veniam sed qui ipsum consequuntur ratione a voluptatum sunt non? Consectetur earum voluptatibus ipsa vero eius praesentium similique tenetur assumenda. Voluptate quos eaque nihil fugit, pariatur quam laboriosam nobis rem atque expedita laborum! Illum sequi laboriosam tempora autem omnis officiis aliquam magni qui, saepe, natus, unde possimus minima nostrum! Ratione placeat nulla amet veniam exercitationem. Ipsum quod magnam harum soluta? Sed, sunt! Doloremque nostrum non deserunt, reiciendis iure praesentium. Perspiciatis, reiciendis natus! Iure tenetur consequatur iusto neque pariatur adipisci voluptates accusamus voluptatum veritatis commodi impedit quibusdam, laudantium distinctio omnis. Aperiam nulla sapiente in officia repellat explicabo suscipit, praesentium beatae iste cum ea totam eaque ipsum qui facere neque unde vel molestias provident sint recusandae debitis tempora! Est nihil ipsum eum, tempore eos quo facilis, vel corrupti eveniet blanditiis maxime fugiat dolore eius ut consectetur delectus. Inventore qui vel officia beatae voluptas pariatur similique, consectetur provident. Temporibus, est. Ex, molestias. Eaque optio blanditiis, quaerat, nisi architecto laudantium in nulla sapiente eum sed ipsum voluptate! Ipsum aspernatur, error dolorem ratione quibusdam soluta quo voluptas, facilis quia iure sapiente molestiae nisi corrupti, temporibus modi nesciunt quis! Voluptatem iusto exercitationem facere temporibus a molestiae, quaerat laborum qui harum quo cum, aliquid unde? Delectus vero unde reprehenderit blanditiis natus aspernatur nemo beatae aliquid. Cumque maxime enim illum aliquam, cum similique porro itaque deserunt ex ipsa at commodi voluptates earum assumenda odio temporibus deleniti harum, sed doloremque id velit. Animi dolorem tempore odit ea incidunt! Tempora voluptates placeat in ipsa. Perferendis maxime magnam animi doloremque tempora nobis ea error est ipsam explicabo perspiciatis quis ad libero, voluptate sit! Nemo doloremque recusandae minima ab. Voluptatibus, animi asperiores. Excepturi, libero soluta? Beatae doloribus reprehenderit facere perspiciatis, temporibus cupiditate eveniet ex, incidunt molestiae fugiat corrupti ducimus quaerat debitis dignissimos eum excepturi vel itaque impedit quidem iste esse velit? Vitae nihil autem quia omnis voluptate sint itaque explicabo quas illo perferendis atque, possimus maiores molestias iusto quis assumenda accusamus laborum. Dignissimos possimus quas nisi, perferendis officiis libero natus voluptates illum soluta doloremque et recusandae est impedit vel harum perspiciatis earum voluptate, ipsa quam architecto. Ullam autem fugiat sed delectus inventore consequatur, error, consectetur blanditiis maxime esse hic laudantium iste et odio obcaecati, rerum placeat ab! Saepe ratione quibusdam corrupti minima at? Laboriosam quae nemo soluta quos dignissimos qui officia enim molestias voluptatem veniam? Quia, harum. Quis sit quod neque!
-
-        </p>
+    <div class="container" style="margin-top: 70px;min-height: 100vh;">
+        <div class="row">
+            <?php foreach($produits as $p): ?>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="images/<?= $p['image'] ?>" height="150" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $p['nom'] ?></h5>
+                        <p class="card-text"><?= substr($p["description"], 0, 10) ?> ...</p>
+                        <a href="#" class="btn btn-warning rounded-circle"><i class="fa fa-eye"></i></a>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
     </div>
    
 
