@@ -37,7 +37,10 @@
 
         tab[3] = "Fall";
 
-        tab.forEach(v => document.write(`${v} * `));
+        tab.forEach(v => window.document.write(`${v} * `));
+
+        console.log(window);
+        
     </script>
 </body>
 </html>
